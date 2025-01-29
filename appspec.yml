@@ -1,5 +1,5 @@
 version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /var/lib/tomcat8/webapps
+  - source: target/HelloWorld-1.war
+    destination: /var/lib/tomcat9/webapps/
