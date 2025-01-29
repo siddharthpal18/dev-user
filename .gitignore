@@ -2,3 +2,8 @@ id_rsa
 id_rsa.pub
 rsa
 rsa.pub
+target/
+*.war
+.DS_Store
+.idea/
+.vscode/
