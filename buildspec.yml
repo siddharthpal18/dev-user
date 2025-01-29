@@ -20,7 +20,7 @@ phases:
       - echo Working on creating the tar ball with the WAR and AppSpec file for CodeDeploy
       - mkdir appfiles
       - cd appfiles
-      - cp ../target/HelloWorld-1.war .
+      - cp ../target/HelloWorld-1.zip .
       - cp ../appspec.yml .
       - ls -al
       - tar -zcvf ../target/HelloWorld.tar.gz *.*
