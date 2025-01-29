@@ -33,5 +33,5 @@ artifacts:
 # Use the individual files if you are using the CodeDeploy from CodePipeline
 # Reason is pipeline does not untar and errors out saying that the appspec file is not there
 #    - appfiles/appspec.yml
-#    - appfiles/HelloWorld-1.war
+#    - appfiles/HelloWorld-1.zip
   discard-paths: yes
