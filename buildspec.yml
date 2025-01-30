@@ -3,36 +3,37 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto8  
+      java: corretto8  # Use Corretto 8 (Java 8)
 
   pre_build:
     commands:
       - echo Just listing basic information about the environment
-      - which mvn
-      - mvn -version
-      - pwd
+      - which mvn  # Show mvn path
+      - mvn -version  # Show Maven version
+      - pwd  # Print the current directory
+
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean package
+      - mvn clean package  # Build the project and generate HelloWorld-1.war
+
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Working on creating the tar ball with the WAR and AppSpec file for CodeDeploy
-      - mkdir appfiles
+      - mkdir appfiles  # Create a directory for necessary files
       - cd appfiles
-      - cp ../target/HelloWorld-1.war .
-      - cp ../appspec.yml .
-      - ls -al
-      - tar -zcvf ../target/HelloWorld.tar.gz *.*
-      - cd ..
+      - cp ../target/HelloWorld-1.war .  # Copy the WAR file to appfiles directory
+      - cp ../appspec.yml .  # Copy appspec.yml
+      - ls -al  # Verify the contents of appfiles directory
+      - tar -zcvf ../target/HelloWorld.tar.gz *.*  # Create the tarball with WAR and appspec.yml
+      - cd ..  # Return to the previous directory
+
 artifacts:
   files:
-# IMPORTANT
-# You have to use the tar.gz if you are manually executing CodeDeploy
-    - target/HelloWorld.tar.gz
-# Use the individual files if you are using the CodeDeploy from CodePipeline
-# Reason is pipeline does not untar and errors out saying that the appspec file is not there
+    # IMPORTANT: Use tar.gz for manual deployment or when using CodePipeline.
+    - target/HelloWorld.tar.gz  # Final tarball for deployment
+    # The individual files if you're using CodeDeploy from CodePipeline
     - appfiles/appspec.yml
-    - appfiles/HelloWorld-1.tar.gz
-  discard-paths: yes
+    - appfiles/HelloWorld-1.war
+  discard-paths: yes  # Remove directory structure from artifacts
