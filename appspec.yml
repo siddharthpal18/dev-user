@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: target/HelloWorld-1.war
-    destination: /var/lib/tomcat9/webapps/
+  - source:  .
+    destination: /var/lib/tomcat9/webapps/helloworld-project
 
 hooks:
   BeforeInstall:
